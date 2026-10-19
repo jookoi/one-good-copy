@@ -1,0 +1,57 @@
+{
+  "machine": "Developer's PC, 9 drives: 1 NVMe SSD, 1 SATA SSD, 3 SATA hard drives, 4 USB hard drives",
+  "measuredOn": "2026-10-17",
+  "build": "release, commit 62618db",
+  "source": "_jookoi-data/logs/scan-timing.jsonl, one line per scan, matched by started_unix",
+
+  "wholePc": {
+    "run": { "startedUnix": 1792250413, "kind": "full refresh", "totalMs": 3367649 },
+    "label": "Whole PC, 9 drives",
+    "bytes": 17238485959710,
+    "files": 6770808,
+    "listedMs": 301558,
+    "fullScanMs": 3367649
+  },
+
+  "drives": [
+    {
+      "label": "SATA SSD",
+      "root": "D:\\",
+      "bytes": 439091420382,
+      "files": 1126900,
+      "listedMs": 41699,
+      "fullScanAlone": { "startedUnix": 1792196179, "ms": 168817, "files": 1123872 }
+    },
+    {
+      "label": "NVMe SSD (system drive)",
+      "root": "C:\\",
+      "bytes": 941307537788,
+      "files": 3832938,
+      "listedMs": 265430,
+      "fullScanAlone": null
+    },
+    {
+      "label": "16 TB hard drive",
+      "root": "A:\\",
+      "bytes": 8518164189796,
+      "files": 622550,
+      "listedMs": 50606,
+      "fullScanAlone": null
+    }
+  ],
+
+  "facts": {
+    "contentReadGb": "2.1 GB",
+    "driveSizeGb": "425 GB",
+    "photoHeaderTime": "0:26",
+    "photosRead": "50,033",
+    "photoFamilies": "3,034",
+    "photosWithCaptureTime": "12,370",
+    "oneFamilyExtraCopies": "161 MB"
+  },
+
+  "factSources": {
+    "contentReadGb, driveSizeGb, photoHeaderTime, photosRead, photoFamilies, photosWithCaptureTime": "D: full scan 2026-10-17 02:16 (startedUnix 1792196179), written up in docs/brand/MARKET.md section 6",
+    "oneFamilyExtraCopies": "the DSC06285.jpg family in the Photos page screenshot (12 copies, keep 1)"
+  }
+}

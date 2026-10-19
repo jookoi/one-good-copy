@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Folders: which backup is which? | One Good Copy</title>
+  <meta name="description" content="Compare puts every copy of a folder in its own column, so you see what each backup has that the others don't.">
+  <meta name="theme-color" content="#f7f6f2">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/main.css">
+</head>
+<body>
+  <!-- site-header -->
+
+  <main id="main" tabindex="-1">
+    <section class="wrap page-intro">
+      <p class="story-tag" style="--tint:#1f8a62">Compare</p>
+      <p class="path-chip">E:\1 Photos\2016 · H:\1 Photos\2016 · L:\Photos\2016 · …</p>
+      <h1>Five folders called <span class="accent-orange">2016</span>. Which one is complete?</h1>
+      <p class="lead">Each copy gets a column with its path. Missing files show up.</p>
+    </section>
+
+    <section class="wrap">
+      <figure class="screenshot screenshot-tight">
+        <div class="screenshot-frame">
+          <picture>
+            <source type="image/avif" srcset="/src/img/compare-folders-480.avif 480w, /src/img/compare-folders-960.avif 960w, /src/img/compare-folders-1438.avif 1438w" sizes="min(100vw - 48px, 1192px)">
+            <source type="image/webp" srcset="/src/img/compare-folders-480.webp 480w, /src/img/compare-folders-960.webp 960w, /src/img/compare-folders-1438.webp 1438w" sizes="min(100vw - 48px, 1192px)">
+            <img src="/src/img/compare-folders-1438.webp" alt="Compare: folders that hold mostly the same files, each with the space its extra copies take" width="1438" height="2508" fetchpriority="high" decoding="async">
+          </picture>
+        </div>
+        <figcaption class="screenshot-caption"><span class="pulse" aria-hidden="true"></span>56 videos exist only on drive C.</figcaption>
+      </figure>
+    </section>
+
+    <section class="wrap section" aria-labelledby="steps-heading">
+      <h2 class="visually-hidden" id="steps-heading">How it works</h2>
+      <ol class="steps">
+        <li style="--tint:#c2410c">
+          <span class="step-number" aria-hidden="true">1</span>
+          <h3>Scan</h3>
+          <p>All drives at once.</p>
+        </li>
+        <li style="--tint:#9a6700">
+          <span class="step-number" aria-hidden="true">2</span>
+          <h3>Open</h3>
+          <p>One column per copy.</p>
+        </li>
+        <li style="--tint:#1f8a62">
+          <span class="step-number" aria-hidden="true">3</span>
+          <h3>Fill the gaps</h3>
+          <p>Drag missing files across.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="wrap section section-stack" aria-labelledby="space-heading">
+      <p class="story-tag" style="--tint:#f26a1b">Space</p>
+      <h2 id="space-heading">What fills each drive</h2>
+      <p class="lead">Folder tree and ring charts: size, file types, age.</p>
+      <ul class="legend" aria-label="Dot colours in the folder tree">
+        <li style="--tint:#d62d20">Similar folder elsewhere</li>
+        <li style="--tint:#e8a400">Copies inside</li>
+      </ul>
+      <div class="screenshot-frame">
+        <picture>
+          <source type="image/avif" srcset="/src/img/space-page-480.avif 480w, /src/img/space-page-960.avif 960w, /src/img/space-page-1600.avif 1600w, /src/img/space-page-2292.avif 2292w" sizes="min(100vw - 48px, 1192px)">
+          <source type="image/webp" srcset="/src/img/space-page-480.webp 480w, /src/img/space-page-960.webp 960w, /src/img/space-page-1600.webp 1600w, /src/img/space-page-2292.webp 2292w" sizes="min(100vw - 48px, 1192px)">
+          <img src="/src/img/space-page-1600.webp" alt="Space: folder tree, donut charts of contents and file types, and a table of the folder's contents" width="2292" height="1975" loading="lazy" decoding="async">
+        </picture>
+      </div>
+    </section>
+
+    <section class="wrap section next-section">
+      <a class="next-link" href="/files/">
+        <span class="label"><span class="eyebrow">Next</span><span class="title">Files</span></span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </section>
+  </main>
+
+  <!-- site-footer -->
+</body>
+</html>

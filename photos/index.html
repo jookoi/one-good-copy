@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Photos: one shot, twelve files, six drives | One Good Copy</title>
+  <meta name="description" content="Photos are grouped by camera and capture time, so every copy of one shot is found, renamed copies too.">
+  <meta name="theme-color" content="#f7f6f2">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/main.css">
+</head>
+<body>
+  <!-- site-header -->
+
+  <main id="main" tabindex="-1">
+    <section class="wrap photo-hero">
+      <div class="page-intro">
+        <p class="story-tag" style="--tint:#ffb020">Photos</p>
+        <h1>One shot. <span class="accent-orange">Twelve files.</span> Six drives.</h1>
+        <p class="lead">Grouped by camera and capture time. Renamed copies too.</p>
+      </div>
+
+      <div class="photo-stack" role="group" aria-label="Example photo family">
+        <span class="sheet sheet-1" aria-hidden="true"></span>
+        <span class="sheet sheet-2" aria-hidden="true"></span>
+        <span class="sheet sheet-3" aria-hidden="true"></span>
+        <div class="sheet sheet-4">
+          <p class="file-name">DSC06285.jpg</p>
+          <p>Captured 2018-04-07 17:57:39</p>
+          <ul aria-label="Found in">
+            <li>E:\1 Photos\2018\burlesque</li>
+            <li>H:\1 Photos\2018\CPH Burlesque</li>
+            <li>L:\Photos\2018\burlesque</li>
+            <li>A:\1 Photos\2018\burlesque</li>
+            <li class="more">+ 8 more</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="screenshot-frame screenshot-photos">
+        <picture>
+          <source type="image/avif" srcset="/src/img/photo-family-480.avif 480w, /src/img/photo-family-960.avif 960w, /src/img/photo-family-1600.avif 1600w, /src/img/photo-family-1968.avif 1968w" sizes="min(100vw - 48px, 1192px)">
+          <source type="image/webp" srcset="/src/img/photo-family-480.webp 480w, /src/img/photo-family-960.webp 960w, /src/img/photo-family-1600.webp 1600w, /src/img/photo-family-1968.webp 1968w" sizes="min(100vw - 48px, 1192px)">
+          <img src="/src/img/photo-family-1600.webp" alt="A photo family in the app: 33 files of one shot in 3 versions, with folder, size, dimensions and date taken" width="1968" height="1650" loading="lazy" decoding="async">
+        </picture>
+      </div>
+    </section>
+
+    <section class="wrap section-tight" aria-labelledby="numbers-heading">
+      <h2 class="visually-hidden" id="numbers-heading">In numbers</h2>
+      <dl class="stats">
+        <div class="stat">
+          <dt>{{facts.photoHeaderTime}}</dt>
+          <dd>to read camera details of {{facts.photosRead}} photos.</dd>
+        </div>
+        <div class="stat">
+          <dt>{{facts.photoFamilies}}</dt>
+          <dd>photo families in {{facts.photosWithCaptureTime}} photos.</dd>
+        </div>
+        <div class="stat">
+          <dt>{{facts.oneFamilyExtraCopies}}</dt>
+          <dd>of extra copies of one photo.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="wrap section next-section">
+      <a class="next-link" href="/safety/">
+        <span class="label"><span class="eyebrow">Next</span><span class="title">Safety</span></span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </section>
+  </main>
+
+  <!-- site-footer -->
+</body>
+</html>

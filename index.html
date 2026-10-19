@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>One Good Copy: see where your copies are</title>
+  <meta name="description" content="Free Windows app. Scans all your drives at once and shows what fills them and which folders are copies of each other.">
+  <meta name="theme-color" content="#f7f6f2">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/main.css">
+</head>
+<body>
+  <!-- site-header -->
+
+  <main id="main" tabindex="-1">
+    <section class="wrap hero">
+      <span class="hero-badge">Free for Windows. No ads, no account.</span>
+      <h1>See where your <span class="sorted">copies<svg class="squiggle" aria-hidden="true" viewBox="0 0 300 24" preserveAspectRatio="none"><path d="M4 16 C 50 4, 90 22, 140 12 S 230 4, 296 14" fill="none" stroke="#ffb020" stroke-width="7" stroke-linecap="round"></path></svg></span> are.</h1>
+      <p class="hero-lead">Scans all your drives at once. Shows what fills them and which folders are copies of each other.</p>
+      <div class="hero-actions">
+        <a class="button" id="download" href="{{site.storeUrl}}">Download free for Windows</a>
+        <a class="text-link" href="#how-it-works">See how it works</a>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <figure class="screenshot">
+        <div class="screenshot-frame">
+          <picture>
+            <source type="image/avif" srcset="/src/img/scans-page-480.avif 480w, /src/img/scans-page-960.avif 960w, /src/img/scans-page-1435.avif 1435w" sizes="min(100vw - 48px, 1192px)">
+            <source type="image/webp" srcset="/src/img/scans-page-480.webp 480w, /src/img/scans-page-960.webp 960w, /src/img/scans-page-1435.webp 1435w" sizes="min(100vw - 48px, 1192px)">
+            <img src="/src/img/scans-page-1435.webp" alt="The Scans page after a scan: summary figures and a progress bar for each drive" width="1435" height="2506" fetchpriority="high" decoding="async">
+          </picture>
+        </div>
+        <div class="colour-bar" aria-hidden="true">
+          <span style="--share:34;--tint:#6aa51f;--delay:0.9s"></span>
+          <span style="--share:22;--tint:#1c7c5c;--delay:1s"></span>
+          <span style="--share:9;--tint:#8b5cf6;--delay:1.1s"></span>
+          <span style="--share:3;--tint:#0ea5e9;--delay:1.15s"></span>
+          <span style="--share:4;--tint:#14b8a6;--delay:1.2s"></span>
+          <span style="--share:16;--tint:#c2560f;--delay:1.25s"></span>
+          <span style="--share:8;--tint:#e8559a;--delay:1.3s"></span>
+          <span style="--share:4;--tint:#e0252b;--delay:1.35s"></span>
+        </div>
+        <figcaption>Every drive and what fills it.</figcaption>
+      </figure>
+    </section>
+
+    <section class="wrap section" id="how-it-works" aria-labelledby="turn-heading">
+      <h2 class="visually-hidden" id="turn-heading">What it shows</h2>
+
+      <div class="story">
+        <article class="story-row" style="--tint:#f26a1b">
+          <div class="story-text">
+            <p class="story-tag">Space</p>
+            <h3>What fills each drive</h3>
+            <p>Folder tree and ring charts. Click down to the big stuff.</p>
+            <a class="story-link" href="/folders/#space-heading">More about Space <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="story-shot">
+            <picture>
+              <source type="image/avif" srcset="/src/img/space-page-480.avif 480w, /src/img/space-page-960.avif 960w, /src/img/space-page-1600.avif 1600w, /src/img/space-page-2292.avif 2292w" sizes="(min-width: 860px) 1240px, 180vw">
+              <source type="image/webp" srcset="/src/img/space-page-480.webp 480w, /src/img/space-page-960.webp 960w, /src/img/space-page-1600.webp 1600w, /src/img/space-page-2292.webp 2292w" sizes="(min-width: 860px) 1240px, 180vw">
+              <img src="/src/img/space-page-960.webp" alt="Space: a folder tree next to ring charts of what the selected folder holds" width="2292" height="1975" loading="lazy" decoding="async" style="--shot-zoom: 170%; --shot-x: -2%; --shot-y: -4%">
+            </picture>
+          </div>
+        </article>
+
+        <article class="story-row" style="--tint:#1f8a62">
+          <div class="story-text">
+            <p class="story-tag">Compare</p>
+            <h3>Copies side by side</h3>
+            <p>Each copy of a folder gets a column with its path. Missing files show up.</p>
+            <a class="story-link" href="/folders/">More about Compare <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="story-shot">
+            <picture>
+              <source type="image/avif" srcset="/src/img/compare-folders-480.avif 480w, /src/img/compare-folders-960.avif 960w, /src/img/compare-folders-1438.avif 1438w" sizes="(min-width: 860px) 1240px, 180vw">
+              <source type="image/webp" srcset="/src/img/compare-folders-480.webp 480w, /src/img/compare-folders-960.webp 960w, /src/img/compare-folders-1438.webp 1438w" sizes="(min-width: 860px) 1240px, 180vw">
+              <img src="/src/img/compare-folders-960.webp" alt="Compare: folders that hold mostly the same files, each with the space its extra copies take" width="1438" height="2508" loading="lazy" decoding="async" style="--shot-zoom: 170%; --shot-x: -2%; --shot-y: -2%">
+            </picture>
+          </div>
+        </article>
+
+        <article class="story-row" style="--tint:#ffb020">
+          <div class="story-text">
+            <p class="story-tag">Photos</p>
+            <h3>Every version of a photo</h3>
+            <p>Grouped by camera and capture time. Renamed copies too.</p>
+            <a class="story-link" href="/photos/">More about Photos <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="story-shot">
+            <picture>
+              <source type="image/avif" srcset="/src/img/photo-family-480.avif 480w, /src/img/photo-family-960.avif 960w, /src/img/photo-family-1600.avif 1600w, /src/img/photo-family-1968.avif 1968w" sizes="(min-width: 860px) 1240px, 180vw">
+              <source type="image/webp" srcset="/src/img/photo-family-480.webp 480w, /src/img/photo-family-960.webp 960w, /src/img/photo-family-1600.webp 1600w, /src/img/photo-family-1968.webp 1968w" sizes="(min-width: 860px) 1240px, 180vw">
+              <img src="/src/img/photo-family-960.webp" alt="A photo family: 33 files of one shot in 3 versions, each with its folder and date" width="1968" height="1650" loading="lazy" decoding="async" style="--shot-zoom: 150%; --shot-x: -1%; --shot-y: -9%">
+            </picture>
+          </div>
+        </article>
+      </div>
+
+      <p class="story-more">Need one file? <a href="/files/">Search every drive <span aria-hidden="true">→</span></a></p>
+    </section>
+
+    <section class="wrap section" aria-labelledby="fast-heading">
+      <h2 id="fast-heading">Fast</h2>
+      <p class="speed-note">All drives are scanned in parallel. Rescans only check what changed. Measured on the developer's PC:</p>
+      <div class="table-scroll scroll-region" tabindex="0" role="region" aria-label="Scan times">
+        <!-- speed-table -->
+      </div>
+    </section>
+
+    <section class="wrap section">
+      <a class="safety" href="/safety/">
+        <b>Safe</b>
+        <span><span aria-hidden="true">✕</span> never deletes on its own</span><span><span aria-hidden="true">✕</span> Recycle Bin only</span><span><span aria-hidden="true">✕</span> nothing leaves your PC</span>
+        <span class="go">Safety <span aria-hidden="true">→</span></span>
+      </a>
+    </section>
+
+    <section class="wrap section-tight" aria-label="Download">
+      <div class="closing">
+        <span class="shape shape-one" aria-hidden="true"></span>
+        <span class="shape shape-two" aria-hidden="true"></span>
+        <div class="closing-text">
+          <p>Free. No ads. No account.</p>
+          <a class="closing-note" href="/about/">Every feature included. Why it's free <span aria-hidden="true">→</span></a>
+        </div>
+        <a class="button" href="{{site.storeUrl}}">Download for Windows</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- site-footer -->
+</body>
+</html>

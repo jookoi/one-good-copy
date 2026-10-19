@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About: one developer, no company | One Good Copy</title>
+  <meta name="description" content="One Good Copy is freeware from one developer. No investors, no ads, no data collection.">
+  <meta name="theme-color" content="#f7f6f2">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/main.css">
+</head>
+<body>
+  <!-- site-header -->
+
+  <main id="main" tabindex="-1">
+    <section class="wrap narrow page-intro about-intro">
+      <p class="story-tag" style="--tint:#c2410c">About</p>
+      <h1>One developer. <span class="accent-orange">No company.</span></h1>
+      <p class="lead">Built for my own {{facts.wholePcData}} of backups. Free, no ads, no data collection.</p>
+    </section>
+
+    <section class="wrap narrow section-tight" aria-labelledby="deal-heading">
+      <div class="deal">
+        <h2 id="deal-heading">The deal</h2>
+        <ul>
+          <li>Free at home and at work. Nothing locked.</li>
+          <li>Freeware. Share the installer freely.</li>
+          <li>No warranty. Deletes only what you confirm, to the Recycle Bin.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="wrap narrow about-cards" aria-label="Get in touch">
+      <a class="about-card about-card-gold" href="{{site.coffeeUrl}}">
+        <svg aria-hidden="true" width="38" height="38" viewBox="0 0 40 40" fill="none" stroke="#16181d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path class="steam" d="M15 6c-2 3 2 4 0 7"></path><path class="steam steam-late" d="M22 6c-2 3 2 4 0 7"></path><path d="M8 17h24v9a8 8 0 0 1-8 8h-8a8 8 0 0 1-8-8z"></path><path d="M32 20h2a4 4 0 0 1 0 8h-3"></path></svg>
+        <h2>Buy me a coffee</h2>
+        <p>If it saved you a weekend.</p>
+        <span class="card-action">Ko-fi <span aria-hidden="true">→</span></span>
+      </a>
+      <a class="about-card" href="mailto:{{site.contactEmail}}?subject=Source%20code">
+        <svg aria-hidden="true" width="38" height="38" viewBox="0 0 40 40" fill="none" stroke="#c2410c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 13l-7 7 7 7M26 13l7 7-7 7M22 10l-4 20"></path></svg>
+        <h2>Want the source?</h2>
+        <p>Available for a small one-time fee.</p>
+        <span class="card-action">Email <span aria-hidden="true">→</span></span>
+      </a>
+      <a class="about-card" href="mailto:{{site.contactEmail}}?subject=Feature%20request">
+        <svg aria-hidden="true" width="38" height="38" viewBox="0 0 40 40" fill="none" stroke="#1f8a62" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 8v24M8 20h24"></path></svg>
+        <h2>Need a feature?</h2>
+        <p>Tell me what you need.</p>
+        <span class="card-action">Email <span aria-hidden="true">→</span></span>
+      </a>
+    </section>
+
+    <section class="wrap narrow contact">
+      <p>Contact: <a href="mailto:{{site.contactEmail}}">{{site.contactEmail}}</a></p>
+    </section>
+  </main>
+
+  <!-- site-footer -->
+</body>
+</html>

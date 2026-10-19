@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="1076 543 400 400" role="img" aria-label="One Good Copy"><defs>
+ <linearGradient id="ogc-cream" x1="0%" y1="0%" x2="85%" y2="100%"><stop offset="0%" stop-color="#fff9e9"></stop><stop offset="53%" stop-color="#ffe5a0"></stop><stop offset="100%" stop-color="#ffc75c"></stop></linearGradient>
+ <linearGradient id="ogc-gold" x1="0%" y1="0%" x2="95%" y2="100%"><stop offset="0%" stop-color="#fff06f"></stop><stop offset="42%" stop-color="#ffcb29"></stop><stop offset="100%" stop-color="#f59a08"></stop></linearGradient>
+ <linearGradient id="ogc-orange" x1="0%" y1="0%" x2="93%" y2="100%"><stop offset="0%" stop-color="#ffae2f"></stop><stop offset="35%" stop-color="#ff8620"></stop><stop offset="76%" stop-color="#f95e16"></stop><stop offset="100%" stop-color="#d83d0e"></stop></linearGradient>
+ <linearGradient id="ogc-fold" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ffae40"></stop><stop offset="100%" stop-color="#d94b10"></stop></linearGradient>
+</defs>
+<path d="M 1146 561 H 1260 Q 1305 561 1305 606 V 764 Q1305 811 1259 811 H 1146 Q1102 811 1102 766 V 606 Q1102 561 1146 561 Z" fill="url(#ogc-cream)"></path>
+<path d="M 1202 604 H 1328 Q1375 604 1375 651 V 810 Q1375 857 1328 857 H 1202 Q1156 857 1156 811 V 651 Q1156 604 1202 604 Z" fill="url(#ogc-gold)"></path>
+<path d="M 1252 650 H 1390 L 1450 708 V 879 Q1450 925 1404 925 H 1252 Q1206 925 1206 879 V 696 Q1206 650 1252 650 Z" fill="url(#ogc-orange)"></path>
+<path d="M 1390 650 V 690 Q1390 709 1410 709 H 1450 Z" fill="url(#ogc-fold)"></path>
+<path d="M 1390 650 V 691 Q1390 708 1411 708 H 1450" fill="none" stroke="#ffb34d" stroke-width="2.5" opacity=".7"></path>
+<path d="M 1280 752 L 1327 719 Q1334 714 1334 726 V 856" fill="none" stroke="#fff9ee" stroke-width="38" stroke-linecap="round" stroke-linejoin="round"></path></svg>
