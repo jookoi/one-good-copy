@@ -9,7 +9,6 @@ const widths = [480, 960, 1600, 2400];
 const screenshots = {
   // Copies of the app repo's docs/screenshots (captures of 2026-10-20), renamed.
   "app-overview": "app-overview.png",
-  "app-scans-after": "app-scans-after.png",
   "app-space": "app-space.png",
   "app-compare": "app-compare.png",
   "app-compare-differences": "app-compare-differences.png",
@@ -19,9 +18,8 @@ const screenshots = {
   "app-photo-preview": "app-photo-preview.png",
 };
 
-// Cut after redaction, in source pixels. The scan-finished window loses its Catalog footer.
+// Cut after redaction, in source pixels.
 const crops = {
-  "app-scans-after": { left: 0, top: 0, width: 2115, height: 1760 },
   // Whole-PC scan: the summary figures only. The per-drive rows below hold the owner's name.
   "app-scan-whole-pc": { left: 300, top: 225, width: 2160, height: 470 },
 };
