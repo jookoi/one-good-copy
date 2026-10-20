@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>One Good Copy: see where your copies are</title>
-  <meta name="description" content="Free Windows app. Scans all your drives at once and shows what fills them and which folders are copies of each other.">
-  <meta name="theme-color" content="#f7f6f2">
+  <title>One Good Copy: stop drowning in your own backups</title>
+  <meta name="description" content="Free Windows app. Shows what fills your drives, which folders are copies of each other and what exists nowhere else, so you can keep one clean set.">
+  <meta name="theme-color" content="#0e0f12">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/src/main.css">
 </head>
@@ -14,117 +14,150 @@
 
   <main id="main" tabindex="-1">
     <section class="wrap hero">
-      <span class="hero-badge">Free for Windows. No ads, no account.</span>
-      <h1>See where your <span class="sorted">copies<svg class="squiggle" aria-hidden="true" viewBox="0 0 300 24" preserveAspectRatio="none"><path d="M4 16 C 50 4, 90 22, 140 12 S 230 4, 296 14" fill="none" stroke="#ffb020" stroke-width="7" stroke-linecap="round"></path></svg></span> are.</h1>
-      <p class="hero-lead">Scans all your drives at once. Shows what fills them and which folders are copies of each other.</p>
-      <div class="hero-actions">
-        <a class="button" id="download" href="{{site.storeUrl}}">Download free for Windows</a>
-        <a class="text-link" href="#how-it-works">See how it works</a>
-      </div>
+      <h1>Stop drowning in your own <span class="accent-orange">backups.</span></h1>
+      <p class="hero-lead">You know the pile. Ten years of drag-and-drop. Four drives, three laptops, a phone dump, and five folders named <code>backup old</code>.</p>
+      <p class="hero-lead">You want to clean it up, but you are afraid to delete the one folder that has the complete set of your photos or projects. So you buy a bigger drive and move the mess again.</p>
+      <ul class="hero-aside" aria-label="The deal">
+        <li><b>100% free</b></li>
+        <li>No account</li>
+        <li>No ads</li>
+        <li>No upsell</li>
+        <li>No cloud</li>
+        <li>One developer, not a company</li>
+      </ul>
     </section>
 
-    <section class="wrap">
-      <figure class="screenshot">
-        <div class="screenshot-frame">
+    <section class="wrap hero-shot" aria-label="Overview screenshot">
+      <figure class="screenshot walk-shot">
+        <div class="screenshot-frame scroll-region" tabindex="0" role="region" aria-label="Overview screenshot">
           <picture>
-            <source type="image/avif" srcset="/src/img/scans-page-480.avif 480w, /src/img/scans-page-960.avif 960w, /src/img/scans-page-1435.avif 1435w" sizes="min(100vw - 48px, 1192px)">
-            <source type="image/webp" srcset="/src/img/scans-page-480.webp 480w, /src/img/scans-page-960.webp 960w, /src/img/scans-page-1435.webp 1435w" sizes="min(100vw - 48px, 1192px)">
-            <img src="/src/img/scans-page-1435.webp" alt="The Scans page after a scan: summary figures and a progress bar for each drive" width="1435" height="2506" fetchpriority="high" decoding="async">
+            <source type="image/avif" srcset="/src/img/app-overview-480.avif 480w, /src/img/app-overview-960.avif 960w, /src/img/app-overview-1600.avif 1600w, /src/img/app-overview-1924.avif 1924w" sizes="(min-width: 860px) min(100vw - 48px, 1192px), 820px">
+            <source type="image/webp" srcset="/src/img/app-overview-480.webp 480w, /src/img/app-overview-960.webp 960w, /src/img/app-overview-1600.webp 1600w, /src/img/app-overview-1924.webp 1924w" sizes="(min-width: 860px) min(100vw - 48px, 1192px), 820px">
+            <img src="/src/img/app-overview-1924.webp" alt="Overview after a scan: a ring chart of what fills the drives, and a list of things worth a look, with the space taken by extra copies first" width="1924" height="1184" fetchpriority="high" decoding="async">
           </picture>
         </div>
-        <div class="colour-bar" aria-hidden="true">
-          <span style="--share:34;--tint:#6aa51f;--delay:0.9s"></span>
-          <span style="--share:22;--tint:#1c7c5c;--delay:1s"></span>
-          <span style="--share:9;--tint:#8b5cf6;--delay:1.1s"></span>
-          <span style="--share:3;--tint:#0ea5e9;--delay:1.15s"></span>
-          <span style="--share:4;--tint:#14b8a6;--delay:1.2s"></span>
-          <span style="--share:16;--tint:#c2560f;--delay:1.25s"></span>
-          <span style="--share:8;--tint:#e8559a;--delay:1.3s"></span>
-          <span style="--share:4;--tint:#e0252b;--delay:1.35s"></span>
-        </div>
-        <figcaption>Every drive and what fills it.</figcaption>
+        <figcaption>One scan of every drive: what fills them, and how much of it is extra copies.</figcaption>
       </figure>
     </section>
 
-    <section class="wrap section" id="how-it-works" aria-labelledby="turn-heading">
-      <h2 class="visually-hidden" id="turn-heading">What it shows</h2>
-
-      <div class="story">
-        <article class="story-row" style="--tint:#f26a1b">
-          <div class="story-text">
-            <p class="story-tag">Space</p>
-            <h3>What fills each drive</h3>
-            <p>Folder tree and ring charts. Click down to the big stuff.</p>
-            <a class="story-link" href="/folders/#space-heading">More about Space <span aria-hidden="true">→</span></a>
-          </div>
-          <div class="story-shot">
-            <picture>
-              <source type="image/avif" srcset="/src/img/space-page-480.avif 480w, /src/img/space-page-960.avif 960w, /src/img/space-page-1600.avif 1600w, /src/img/space-page-2292.avif 2292w" sizes="(min-width: 860px) 1240px, 180vw">
-              <source type="image/webp" srcset="/src/img/space-page-480.webp 480w, /src/img/space-page-960.webp 960w, /src/img/space-page-1600.webp 1600w, /src/img/space-page-2292.webp 2292w" sizes="(min-width: 860px) 1240px, 180vw">
-              <img src="/src/img/space-page-960.webp" alt="Space: a folder tree next to ring charts of what the selected folder holds" width="2292" height="1975" loading="lazy" decoding="async" style="--shot-zoom: 170%; --shot-x: -2%; --shot-y: -4%">
-            </picture>
-          </div>
-        </article>
-
-        <article class="story-row" style="--tint:#1f8a62">
-          <div class="story-text">
-            <p class="story-tag">Compare</p>
-            <h3>Copies side by side</h3>
-            <p>Each copy of a folder gets a column with its path. Missing files show up.</p>
-            <a class="story-link" href="/folders/">More about Compare <span aria-hidden="true">→</span></a>
-          </div>
-          <div class="story-shot">
-            <picture>
-              <source type="image/avif" srcset="/src/img/compare-folders-480.avif 480w, /src/img/compare-folders-960.avif 960w, /src/img/compare-folders-1438.avif 1438w" sizes="(min-width: 860px) 1240px, 180vw">
-              <source type="image/webp" srcset="/src/img/compare-folders-480.webp 480w, /src/img/compare-folders-960.webp 960w, /src/img/compare-folders-1438.webp 1438w" sizes="(min-width: 860px) 1240px, 180vw">
-              <img src="/src/img/compare-folders-960.webp" alt="Compare: folders that hold mostly the same files, each with the space its extra copies take" width="1438" height="2508" loading="lazy" decoding="async" style="--shot-zoom: 170%; --shot-x: -2%; --shot-y: -2%">
-            </picture>
-          </div>
-        </article>
-
-        <article class="story-row" style="--tint:#ffb020">
-          <div class="story-text">
-            <p class="story-tag">Photos</p>
-            <h3>Every version of a photo</h3>
-            <p>Grouped by camera and capture time. Renamed copies too.</p>
-            <a class="story-link" href="/photos/">More about Photos <span aria-hidden="true">→</span></a>
-          </div>
-          <div class="story-shot">
-            <picture>
-              <source type="image/avif" srcset="/src/img/photo-family-480.avif 480w, /src/img/photo-family-960.avif 960w, /src/img/photo-family-1600.avif 1600w, /src/img/photo-family-1968.avif 1968w" sizes="(min-width: 860px) 1240px, 180vw">
-              <source type="image/webp" srcset="/src/img/photo-family-480.webp 480w, /src/img/photo-family-960.webp 960w, /src/img/photo-family-1600.webp 1600w, /src/img/photo-family-1968.webp 1968w" sizes="(min-width: 860px) 1240px, 180vw">
-              <img src="/src/img/photo-family-960.webp" alt="A photo family: 33 files of one shot in 3 versions, each with its folder and date" width="1968" height="1650" loading="lazy" decoding="async" style="--shot-zoom: 150%; --shot-x: -1%; --shot-y: -9%">
-            </picture>
-          </div>
-        </article>
-      </div>
-
-      <p class="story-more">Need one file? <a href="/files/">Search every drive <span aria-hidden="true">→</span></a></p>
+    <section class="wrap walk-intro" aria-labelledby="control-heading">
+      <h2 id="control-heading">One Good Copy shows you which copy to keep.</h2>
     </section>
 
-    <section class="wrap section" aria-labelledby="fast-heading">
-      <h2 id="fast-heading">Fast</h2>
-      <p class="speed-note">All drives are scanned in parallel. Rescans only check what changed. Measured on the developer's PC:</p>
-      <div class="table-scroll scroll-region" tabindex="0" role="region" aria-label="Scan times">
+    <section class="wrap walk" style="--tint:#f26a1b" aria-labelledby="space-heading">
+      <div class="walk-head">
+        <span class="walk-number" aria-hidden="true">1</span>
+        <h2 id="space-heading">See what is eating your drive space</h2>
+        <p class="walk-text">A folder tree and ring charts for every drive. Click down to the big chunks. A dot marks folders that have a copy somewhere else.</p>
+      </div>
+      <figure class="screenshot walk-shot">
+        <div class="screenshot-frame scroll-region" tabindex="0" role="region" aria-label="Space page screenshot">
+          <picture>
+            <source type="image/avif" srcset="/src/img/app-space-480.avif 480w, /src/img/app-space-960.avif 960w, /src/img/app-space-1600.avif 1600w, /src/img/app-space-1924.avif 1924w" sizes="(min-width: 860px) min(100vw - 48px, 1192px), 820px">
+            <source type="image/webp" srcset="/src/img/app-space-480.webp 480w, /src/img/app-space-960.webp 960w, /src/img/app-space-1600.webp 1600w, /src/img/app-space-1924.webp 1924w" sizes="(min-width: 860px) min(100vw - 48px, 1192px), 820px">
+            <img src="/src/img/app-space-1924.webp" alt="Space: a folder tree where folders with a copy elsewhere get a red dot, ring charts of the selected folder, and its contents" width="1924" height="1604" loading="lazy" decoding="async">
+          </picture>
+        </div>
+      </figure>
+    </section>
+
+    <section class="wrap walk" style="--tint:#e0252b" aria-labelledby="nowhere-else-heading">
+      <div class="walk-head">
+        <span class="walk-number" aria-hidden="true">2</span>
+        <h2 id="nowhere-else-heading">See what exists nowhere else</h2>
+        <p class="walk-text">Open the copies of a folder side by side, one column each. Before you delete anything, it counts the files with no copy in the other folders. Files with copies further away show how many, on any drive.</p>
+      </div>
+      <figure class="screenshot walk-shot">
+        <div class="screenshot-frame scroll-region" tabindex="0" role="region" aria-label="Compare screenshot">
+          <picture>
+            <source type="image/avif" srcset="/src/img/app-compare-480.avif 480w, /src/img/app-compare-960.avif 960w, /src/img/app-compare-1600.avif 1600w, /src/img/app-compare-2445.avif 2445w" sizes="(min-width: 860px) min(100vw - 48px, 1192px), 820px">
+            <source type="image/webp" srcset="/src/img/app-compare-480.webp 480w, /src/img/app-compare-960.webp 960w, /src/img/app-compare-1600.webp 1600w, /src/img/app-compare-2445.webp 2445w" sizes="(min-width: 860px) min(100vw - 48px, 1192px), 820px">
+            <img src="/src/img/app-compare-2445.webp" alt="Compare: four copies of a folder side by side, one column each with its path. Dashes mark files a copy is missing, and an opened file shows the details that differ" width="2445" height="1464" loading="lazy" decoding="async">
+          </picture>
+        </div>
+      </figure>
+      <p class="walk-more"><a href="/folders/">How folder matching works</a></p>
+    </section>
+
+    <section class="wrap walk" style="--tint:#ffb020" aria-labelledby="photos-heading">
+      <div class="walk-head">
+        <span class="walk-number" aria-hidden="true">3</span>
+        <h2 id="photos-heading">Similar photos, grouped</h2>
+        <p class="walk-text">A photo family is one shot in every form: the RAW, the camera JPEG, exports, resizes and colour edits. They match on camera and capture time, not on identical bytes. Bursts sit together but are never called copies, and nothing is marked for deletion.</p>
+      </div>
+      <figure class="screenshot walk-shot">
+        <div class="screenshot-frame scroll-region" tabindex="0" role="region" aria-label="Photo family screenshot">
+          <picture>
+            <source type="image/avif" srcset="/src/img/app-photo-family-480.avif 480w, /src/img/app-photo-family-960.avif 960w, /src/img/app-photo-family-1600.avif 1600w, /src/img/app-photo-family-1924.avif 1924w" sizes="(min-width: 860px) min(100vw - 48px, 1192px), 820px">
+            <source type="image/webp" srcset="/src/img/app-photo-family-480.webp 480w, /src/img/app-photo-family-960.webp 960w, /src/img/app-photo-family-1600.webp 1600w, /src/img/app-photo-family-1924.webp 1924w" sizes="(min-width: 860px) min(100vw - 48px, 1192px), 820px">
+            <img src="/src/img/app-photo-family-1924.webp" alt="A photo family: the RAW and JPEG files of one shot in several folders, each with its type, pixel size, file size and capture time" width="1924" height="1082" loading="lazy" decoding="async">
+          </picture>
+        </div>
+      </figure>
+      <p class="walk-more"><a href="/photos/">How photo matching works</a></p>
+    </section>
+
+    <section class="wrap walk" aria-labelledby="fast-heading">
+      <div class="walk-head">
+        <h2 id="fast-heading">Fast, with everything switched on</h2>
+        <p class="walk-text">One scan lists every drive, reads photo details, fingerprints possible copies and groups photos. The developer's PC, first scan with an empty catalog:</p>
+      </div>
+      <figure class="screenshot walk-shot">
+        <div class="screenshot-frame scroll-region" tabindex="0" role="region" aria-label="Whole-PC scan complete screenshot">
+          <picture>
+            <source type="image/avif" srcset="/src/img/app-scan-whole-pc-480.avif 480w, /src/img/app-scan-whole-pc-960.avif 960w, /src/img/app-scan-whole-pc-1600.avif 1600w, /src/img/app-scan-whole-pc-2160.avif 2160w" sizes="(min-width: 860px) min(100vw - 48px, 1192px), 820px">
+            <source type="image/webp" srcset="/src/img/app-scan-whole-pc-480.webp 480w, /src/img/app-scan-whole-pc-960.webp 960w, /src/img/app-scan-whole-pc-1600.webp 1600w, /src/img/app-scan-whole-pc-2160.webp 2160w" sizes="(min-width: 860px) min(100vw - 48px, 1192px), 820px">
+            <img src="/src/img/app-scan-whole-pc-2160.webp" alt="Scan complete for the whole PC: time taken, drives, files listed, photo headers read, files fingerprinted, groups of copies, space taken by extra copies and photo families" width="2160" height="470" loading="lazy" decoding="async">
+          </picture>
+        </div>
+      </figure>
+      <dl class="stats walk-follow">
+        <div class="stat">
+          <dt>{{facts.wholePcFiles}}</dt>
+          <dd>files on {{facts.wholePcDrives}} drives, listed in {{facts.wholePcListedIn}}.</dd>
+        </div>
+        <div class="stat">
+          <dt>{{facts.contentReadGb}}</dt>
+          <dd>read to fingerprint the possible copies in {{facts.driveDataGb}} of files. That is {{facts.contentReadShare}}.</dd>
+        </div>
+        <div class="stat">
+          <dt>{{facts.photosPerSecondSsd}}</dt>
+          <dd>photos a second on an SSD. Only the header is read, never the whole photo.</dd>
+        </div>
+      </dl>
+      <h3 class="walk-subhead">How</h3>
+      <ul class="how-list">
+        <li>All drives are read at the same time. Hard drives are read in path order, so the disk head does not jump around.</li>
+        <li>Name, size and photo details come first. Only files that can still be copies get a fingerprint, and a fingerprint starts with a small part of the file.</li>
+        <li>Photos match on camera and capture time from the header. No pixels are compared.</li>
+        <li>The catalog is kept. A rescan only opens folders that changed.</li>
+      </ul>
+      <p class="walk-text walk-compare">A tool that hashes every file in full has to read every byte: all {{facts.driveDataGb}}, not {{facts.contentReadGb}}.</p>
+      <div class="table-scroll scroll-region walk-follow" tabindex="0" role="region" aria-label="Scan times">
         <!-- speed-table -->
       </div>
     </section>
 
-    <section class="wrap section">
-      <a class="safety" href="/safety/">
-        <b>Safe</b>
-        <span><span aria-hidden="true">✕</span> never deletes on its own</span><span><span aria-hidden="true">✕</span> Recycle Bin only</span><span><span aria-hidden="true">✕</span> nothing leaves your PC</span>
-        <span class="go">Safety <span aria-hidden="true">→</span></span>
-      </a>
+    <section class="wrap walk" aria-labelledby="deal-heading">
+      <div class="walk-head">
+        <h2 id="deal-heading">The deal</h2>
+      </div>
+      <ul class="deal-list">
+        <li><b>Free, for real.</b> Every feature, every path, every compare. No trial, no upsell, no subscription.</li>
+        <li><b>Local only.</b> No account, no cloud. Nothing leaves your PC.</li>
+        <li><b>Scans only read.</b> Scanning never changes a file.</li>
+        <li><b>Recycle Bin only.</b> Nothing is deleted on its own, and nothing is pre-selected.</li>
+      </ul>
+      <p class="walk-more">Need one file? <a href="/files/">Search every drive</a> · <a href="/safety/">Safety</a> · <a href="/about/">Why it's free</a></p>
     </section>
 
-    <section class="wrap section-tight" aria-label="Download">
+    <section class="wrap section-tight next-section" aria-label="Download">
       <div class="closing">
         <span class="shape shape-one" aria-hidden="true"></span>
         <span class="shape shape-two" aria-hidden="true"></span>
         <div class="closing-text">
-          <p>Free. No ads. No account.</p>
-          <a class="closing-note" href="/about/">Every feature included. Why it's free <span aria-hidden="true">→</span></a>
+          <p>Stop moving your mess to a bigger drive.</p>
+          <span class="closing-note">Free for Windows. No account.</span>
         </div>
         <a class="button" href="{{site.storeUrl}}">Download for Windows</a>
       </div>

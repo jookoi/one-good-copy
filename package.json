@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "images": "node scripts/optimize-images.mjs",
+    "licenses": "node scripts/sync-licenses.mjs",
     "lint": "eslint .",
     "check": "eslint . && vite build",
     "prepare": "husky"

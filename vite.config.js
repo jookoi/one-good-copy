@@ -11,6 +11,7 @@ const pages = [
   { file: "safety/index.html", url: "/safety/", label: "Safety", inNav: true },
   { file: "about/index.html", url: "/about/", label: "About", inNav: true },
   { file: "privacy/index.html", url: "/privacy/", label: "Privacy" },
+  { file: "licenses/index.html", url: "/licenses/", label: "Licenses" },
 ];
 
 function pageLink(page, currentUrl, attributes = "") {
@@ -181,6 +182,42 @@ function siteSettings() {
   };
 }
 
+// Fills <!-- third-party-packages --> with a table of the packages in public/third-party-notices.txt.
+// That file is a copy of the app's notices (npm run licenses), so the page lists exactly what the app ships.
+function thirdPartyPackages() {
+  const noticesFile = resolve(import.meta.dirname, "public/third-party-notices.txt");
+  const escape = (text) => text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  return {
+    name: "third-party-packages",
+    transformIndexHtml: {
+      order: "pre",
+      handler(html) {
+        if (!html.includes("<!-- third-party-packages -->")) return html;
+        const packageSection = readFileSync(noticesFile, "utf8").split(/^=+$/m)[2];
+        const rows = packageSection
+          .split(/\r?\n/)
+          .map((line) => line.split(" | "))
+          // "name version | licence | link"; a few packages have no link.
+          .filter((parts) => (parts.length === 2 || parts.length === 3) && /^\S+ \S+$/.test(parts[0].trim()))
+          .map(([nameAndVersion, licence, link]) => {
+            const [name, version] = nameAndVersion.trim().split(" ");
+            const nameCell = link ? `<a href="${escape(link.trim())}">${escape(name)}</a>` : escape(name);
+            return `<tr><td>${nameCell}</td><td>${escape(version)}</td><td>${escape(licence.trim())}</td></tr>`;
+          });
+        if (rows.length === 0) throw new Error("public/third-party-notices.txt has no package lines");
+        return html
+          .replace("{{licences.packageCount}}", String(rows.length))
+          .replace("<!-- third-party-packages -->", `<table class="licence-table">
+          <thead><tr><th scope="col">Package</th><th scope="col">Version</th><th scope="col">Licence</th></tr></thead>
+          <tbody>
+            ${rows.join("\n            ")}
+          </tbody>
+        </table>`);
+      },
+    },
+  };
+}
+
 // Preloads the two latin variable fonts the first screen uses, so text paints in its final font.
 function preloadCriticalFonts() {
   return {
@@ -200,7 +237,7 @@ function preloadCriticalFonts() {
 }
 
 export default defineConfig({
-  plugins: [sharedLayout(), siteSettings(), benchmarkNumbers(), preloadCriticalFonts()],
+  plugins: [sharedLayout(), siteSettings(), benchmarkNumbers(), thirdPartyPackages(), preloadCriticalFonts()],
   build: {
     target: "es2022",
     cssCodeSplit: false,

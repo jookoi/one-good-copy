@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Folders: which backup is which? | One Good Copy</title>
   <meta name="description" content="Compare puts every copy of a folder in its own column, so you see what each backup has that the others don't.">
-  <meta name="theme-color" content="#f7f6f2">
+  <meta name="theme-color" content="#0e0f12">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/src/main.css">
 </head>
@@ -21,15 +21,15 @@
     </section>
 
     <section class="wrap">
-      <figure class="screenshot screenshot-tight">
-        <div class="screenshot-frame">
+      <figure class="screenshot screenshot-tight walk-shot">
+        <div class="screenshot-frame scroll-region" tabindex="0" role="region" aria-label="Compare screenshot">
           <picture>
-            <source type="image/avif" srcset="/src/img/compare-folders-480.avif 480w, /src/img/compare-folders-960.avif 960w, /src/img/compare-folders-1438.avif 1438w" sizes="min(100vw - 48px, 1192px)">
-            <source type="image/webp" srcset="/src/img/compare-folders-480.webp 480w, /src/img/compare-folders-960.webp 960w, /src/img/compare-folders-1438.webp 1438w" sizes="min(100vw - 48px, 1192px)">
-            <img src="/src/img/compare-folders-1438.webp" alt="Compare: folders that hold mostly the same files, each with the space its extra copies take" width="1438" height="2508" fetchpriority="high" decoding="async">
+            <source type="image/avif" srcset="/src/img/app-compare-differences-480.avif 480w, /src/img/app-compare-differences-960.avif 960w, /src/img/app-compare-differences-1600.avif 1600w, /src/img/app-compare-differences-2093.avif 2093w" sizes="(min-width: 860px) min(100vw - 48px, 1192px), 820px">
+            <source type="image/webp" srcset="/src/img/app-compare-differences-480.webp 480w, /src/img/app-compare-differences-960.webp 960w, /src/img/app-compare-differences-1600.webp 1600w, /src/img/app-compare-differences-2093.webp 2093w" sizes="(min-width: 860px) min(100vw - 48px, 1192px), 820px">
+            <img src="/src/img/app-compare-differences-2093.webp" alt="Compare: three copies of a projects folder side by side. Subfolders are marked mostly different, dashes mark missing files" width="2093" height="1364" fetchpriority="high" decoding="async">
           </picture>
         </div>
-        <figcaption class="screenshot-caption"><span class="pulse" aria-hidden="true"></span>56 videos exist only on drive C.</figcaption>
+        <figcaption class="screenshot-caption"><span class="pulse" aria-hidden="true"></span>Files with no copy in the other locations are counted at the top.</figcaption>
       </figure>
     </section>
 
@@ -54,6 +54,18 @@
       </ol>
     </section>
 
+    <section class="wrap walk" aria-labelledby="matching-heading">
+      <div class="walk-head">
+        <h2 id="matching-heading">How folders are matched</h2>
+      </div>
+      <ul class="how-list">
+        <li>Files match on content. Size first, then a fingerprint of a small part of the file. The whole file is read only when those parts match.</li>
+        <li>Two folders count as copies when they share enough of their files: at least half for a big folder, more for a small one. Settings has a stricter and a looser mode.</li>
+        <li>A parent folder only matches when its bigger subfolders match too. Two drives that both hold one Photos folder are not called copies.</li>
+        <li>In Compare, files with no copy in the other columns are counted at the top, and a dash marks a file a copy is missing.</li>
+      </ul>
+    </section>
+
     <section class="wrap section section-stack" aria-labelledby="space-heading">
       <p class="story-tag" style="--tint:#f26a1b">Space</p>
       <h2 id="space-heading">What fills each drive</h2>
@@ -62,12 +74,14 @@
         <li style="--tint:#d62d20">Similar folder elsewhere</li>
         <li style="--tint:#e8a400">Copies inside</li>
       </ul>
-      <div class="screenshot-frame">
-        <picture>
-          <source type="image/avif" srcset="/src/img/space-page-480.avif 480w, /src/img/space-page-960.avif 960w, /src/img/space-page-1600.avif 1600w, /src/img/space-page-2292.avif 2292w" sizes="min(100vw - 48px, 1192px)">
-          <source type="image/webp" srcset="/src/img/space-page-480.webp 480w, /src/img/space-page-960.webp 960w, /src/img/space-page-1600.webp 1600w, /src/img/space-page-2292.webp 2292w" sizes="min(100vw - 48px, 1192px)">
-          <img src="/src/img/space-page-1600.webp" alt="Space: folder tree, donut charts of contents and file types, and a table of the folder's contents" width="2292" height="1975" loading="lazy" decoding="async">
-        </picture>
+      <div class="walk-shot">
+        <div class="screenshot-frame scroll-region" tabindex="0" role="region" aria-label="Space page screenshot">
+          <picture>
+            <source type="image/avif" srcset="/src/img/app-space-480.avif 480w, /src/img/app-space-960.avif 960w, /src/img/app-space-1600.avif 1600w, /src/img/app-space-1924.avif 1924w" sizes="(min-width: 860px) min(100vw - 48px, 1192px), 820px">
+            <source type="image/webp" srcset="/src/img/app-space-480.webp 480w, /src/img/app-space-960.webp 960w, /src/img/app-space-1600.webp 1600w, /src/img/app-space-1924.webp 1924w" sizes="(min-width: 860px) min(100vw - 48px, 1192px), 820px">
+            <img src="/src/img/app-space-1924.webp" alt="Space: a folder tree where folders with a copy elsewhere get a red dot, ring charts of the selected folder, and its contents" width="1924" height="1604" loading="lazy" decoding="async">
+          </picture>
+        </div>
       </div>
     </section>
 

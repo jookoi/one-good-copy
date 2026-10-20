@@ -1,57 +1,68 @@
 {
   "machine": "Developer's PC, 9 drives: 1 NVMe SSD, 1 SATA SSD, 3 SATA hard drives, 4 USB hard drives",
-  "measuredOn": "2026-10-17",
-  "build": "release, commit 62618db",
-  "source": "_jookoi-data/logs/scan-timing.jsonl, one line per scan, matched by started_unix",
-
+  "measuredOn": "2026-10-20",
+  "build": "release build, 20 October 2026, database deleted before each run",
+  "source": "_jookoi-data/logs/scan-timing.jsonl, one line per scan, matched by started_unix. Times are what the Scans page showed; the log's own figures sit next to them.",
   "wholePc": {
-    "run": { "startedUnix": 1792250413, "kind": "full refresh", "totalMs": 3367649 },
+    "run": {
+      "startedUnix": 1792454981,
+      "kind": "full first scan, empty catalog",
+      "logTotalMs": 2854897
+    },
     "label": "Whole PC, 9 drives",
-    "bytes": 17238485959710,
-    "files": 6770808,
-    "listedMs": 301558,
-    "fullScanMs": 3367649
+    "bytes": 17237092720791,
+    "files": 6886488,
+    "listedMs": 310000,
+    "fullScanMs": 2865000
   },
-
   "drives": [
     {
       "label": "SATA SSD",
       "root": "D:\\",
-      "bytes": 439091420382,
-      "files": 1126900,
-      "listedMs": 41699,
-      "fullScanAlone": { "startedUnix": 1792196179, "ms": 168817, "files": 1123872 }
+      "bytes": 451025318846,
+      "files": 1172760,
+      "listedMs": 18000,
+      "fullScanAlone": {
+        "startedUnix": 1792454614,
+        "ms": 42000,
+        "files": 1172760,
+        "logTotalMs": 37181,
+        "logWalkMs": 15998
+      }
     },
     {
       "label": "NVMe SSD (system drive)",
       "root": "C:\\",
-      "bytes": 941307537788,
-      "files": 3832938,
-      "listedMs": 265430,
-      "fullScanAlone": null
+      "bytes": 980028350159,
+      "files": 3902760,
+      "listedMs": 285000,
+      "fullScanAlone": null,
+      "logListedMs": 270241
     },
     {
       "label": "16 TB hard drive",
       "root": "A:\\",
-      "bytes": 8518164189796,
-      "files": 622550,
-      "listedMs": 50606,
-      "fullScanAlone": null
+      "bytes": 8496951265080,
+      "files": 622549,
+      "listedMs": 73000,
+      "fullScanAlone": null,
+      "logListedMs": 72059
     }
   ],
-
   "facts": {
     "contentReadGb": "2.1 GB",
-    "driveSizeGb": "425 GB",
-    "photoHeaderTime": "0:26",
-    "photosRead": "50,033",
-    "photoFamilies": "3,034",
-    "photosWithCaptureTime": "12,370",
-    "oneFamilyExtraCopies": "161 MB"
+    "driveDataGb": "420 GB",
+    "contentReadShare": "0.5%",
+    "photosPerSecondSsd": "10,400",
+    "wholePcPhotoHeaders": "830,659",
+    "wholePcPhotoFamilies": "101,813",
+    "wholePcFingerprinted": "362,668",
+    "wholePcCopyGroups": "173,531",
+    "wholePcExtraCopies": "2.9 TB"
   },
-
   "factSources": {
-    "contentReadGb, driveSizeGb, photoHeaderTime, photosRead, photoFamilies, photosWithCaptureTime": "D: full scan 2026-10-17 02:16 (startedUnix 1792196179), written up in docs/brand/MARKET.md section 6",
-    "oneFamilyExtraCopies": "the DSC06285.jpg family in the Photos page screenshot (12 copies, keep 1)"
+    "contentReadGb, driveDataGb, contentReadShare": "SATA SSD scanned alone, 2026-10-20 00:03 UTC (startedUnix 1792454614): Fingerprinting step read 2.1 GB, 420.1 GB of files seen",
+    "photosPerSecondSsd": "same SATA SSD run, headers lane D: 50,169 photos in 4.8 s (10,413 per second in the log)",
+    "wholePc*": "whole-PC run, 2026-10-20 00:09 UTC (startedUnix 1792454981), Scan complete card on the Scans page"
   }
 }

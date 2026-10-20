@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Files: every file on every drive | One Good Copy</title>
   <meta name="description" content="One search box for every scanned drive. Find any file with part of its name, see duplicates, the biggest files and empty folders.">
-  <meta name="theme-color" content="#f7f6f2">
+  <meta name="theme-color" content="#0e0f12">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/src/main.css">
 </head>
@@ -18,13 +18,21 @@
       <h1>Every file on every drive. <span class="accent-violet">One search box.</span></h1>
       <p class="lead">Type part of a name or path. All drives answer.</p>
       <p class="search-demo" role="img" aria-label="A search box with holiday typed in">
-        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5c5f66" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
         <span aria-hidden="true"><span class="typed">holiday</span><span class="caret"></span></span>
       </p>
     </section>
 
     <section class="wrap">
-      <p class="shot-placeholder">[Files page screenshot: search results across drives, from a demo catalog]</p>
+      <figure class="screenshot screenshot-tight walk-shot">
+        <div class="screenshot-frame scroll-region" tabindex="0" role="region" aria-label="Files page screenshot">
+          <picture>
+            <source type="image/avif" srcset="/src/img/app-files-480.avif 480w, /src/img/app-files-960.avif 960w, /src/img/app-files-1600.avif 1600w, /src/img/app-files-1924.avif 1924w" sizes="(min-width: 860px) min(100vw - 48px, 1192px), 820px">
+            <source type="image/webp" srcset="/src/img/app-files-480.webp 480w, /src/img/app-files-960.webp 960w, /src/img/app-files-1600.webp 1600w, /src/img/app-files-1924.webp 1924w" sizes="(min-width: 860px) min(100vw - 48px, 1192px), 820px">
+            <img src="/src/img/app-files-1924.webp" alt="Files: search across every drive with filters for drive, type, size, photo details, camera and lens" width="1924" height="1082" loading="lazy" decoding="async">
+          </picture>
+        </div>
+      </figure>
     </section>
 
     <section class="wrap section" aria-labelledby="tools-heading">

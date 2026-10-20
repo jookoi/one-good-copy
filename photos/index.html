@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Photos: one shot, twelve files, six drives | One Good Copy</title>
-  <meta name="description" content="Photos are grouped by camera and capture time, so every copy of one shot is found, renamed copies too.">
-  <meta name="theme-color" content="#f7f6f2">
+  <title>Photos: one shot, many files | One Good Copy</title>
+  <meta name="description" content="Photos are grouped by camera and capture time, so the RAW, the camera JPEG and renamed copies of one shot sit together.">
+  <meta name="theme-color" content="#0e0f12">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/src/main.css">
 </head>
@@ -13,55 +13,71 @@
   <!-- site-header -->
 
   <main id="main" tabindex="-1">
-    <section class="wrap photo-hero">
-      <div class="page-intro">
-        <p class="story-tag" style="--tint:#ffb020">Photos</p>
-        <h1>One shot. <span class="accent-orange">Twelve files.</span> Six drives.</h1>
-        <p class="lead">Grouped by camera and capture time. Renamed copies too.</p>
-      </div>
-
-      <div class="photo-stack" role="group" aria-label="Example photo family">
-        <span class="sheet sheet-1" aria-hidden="true"></span>
-        <span class="sheet sheet-2" aria-hidden="true"></span>
-        <span class="sheet sheet-3" aria-hidden="true"></span>
-        <div class="sheet sheet-4">
-          <p class="file-name">DSC06285.jpg</p>
-          <p>Captured 2018-04-07 17:57:39</p>
-          <ul aria-label="Found in">
-            <li>E:\1 Photos\2018\burlesque</li>
-            <li>H:\1 Photos\2018\CPH Burlesque</li>
-            <li>L:\Photos\2018\burlesque</li>
-            <li>A:\1 Photos\2018\burlesque</li>
-            <li class="more">+ 8 more</li>
-          </ul>
-        </div>
-      </div>
+    <section class="wrap page-intro">
+      <p class="story-tag" style="--tint:#ffb020">Photos</p>
+      <h1>One shot. <span class="accent-orange">Many files.</span> Several drives.</h1>
+      <p class="lead">The RAW, the camera JPEG, exports, resizes and colour edits of one shot, grouped as one photo family. They do not have to be identical files.</p>
     </section>
 
     <section class="wrap">
-      <div class="screenshot-frame screenshot-photos">
-        <picture>
-          <source type="image/avif" srcset="/src/img/photo-family-480.avif 480w, /src/img/photo-family-960.avif 960w, /src/img/photo-family-1600.avif 1600w, /src/img/photo-family-1968.avif 1968w" sizes="min(100vw - 48px, 1192px)">
-          <source type="image/webp" srcset="/src/img/photo-family-480.webp 480w, /src/img/photo-family-960.webp 960w, /src/img/photo-family-1600.webp 1600w, /src/img/photo-family-1968.webp 1968w" sizes="min(100vw - 48px, 1192px)">
-          <img src="/src/img/photo-family-1600.webp" alt="A photo family in the app: 33 files of one shot in 3 versions, with folder, size, dimensions and date taken" width="1968" height="1650" loading="lazy" decoding="async">
-        </picture>
-      </div>
+      <figure class="screenshot walk-shot">
+        <div class="screenshot-frame scroll-region" tabindex="0" role="region" aria-label="Photo family screenshot">
+          <picture>
+            <source type="image/avif" srcset="/src/img/app-photo-family-480.avif 480w, /src/img/app-photo-family-960.avif 960w, /src/img/app-photo-family-1600.avif 1600w, /src/img/app-photo-family-1924.avif 1924w" sizes="(min-width: 860px) min(100vw - 48px, 1192px), 820px">
+            <source type="image/webp" srcset="/src/img/app-photo-family-480.webp 480w, /src/img/app-photo-family-960.webp 960w, /src/img/app-photo-family-1600.webp 1600w, /src/img/app-photo-family-1924.webp 1924w" sizes="(min-width: 860px) min(100vw - 48px, 1192px), 820px">
+            <img src="/src/img/app-photo-family-1924.webp" alt="A photo family: the RAW and JPEG files of one shot in several folders, each with its type, pixel size, file size and capture time" width="1924" height="1082" fetchpriority="high" decoding="async">
+          </picture>
+        </div>
+        <figcaption>One photo family: the RAW and JPEG files of one shot, in several folders and drives.</figcaption>
+      </figure>
     </section>
 
-    <section class="wrap section-tight" aria-labelledby="numbers-heading">
-      <h2 class="visually-hidden" id="numbers-heading">In numbers</h2>
+    <section class="wrap walk" aria-labelledby="matching-heading">
+      <div class="walk-head">
+        <h2 id="matching-heading">How photos are matched</h2>
+      </div>
+      <ul class="how-list">
+        <li>Each photo's header is read: camera, capture time and pixel size. Only the header, never the whole photo.</li>
+        <li>Photos from the same camera with the same capture time are one shot. A RAW and its JPEG match even though not one byte is the same. So do an export and a colour edit, as long as they keep the capture time.</li>
+        <li>Shots taken seconds apart are shown as neighbours. They are never called copies.</li>
+        <li>Grouping uses the details already read, so no photo is opened twice.</li>
+        <li>Nothing is marked for deletion. The app never picks the JPEG over the RAW. You choose.</li>
+      </ul>
+    </section>
+
+    <section class="wrap walk" aria-labelledby="preview-heading">
+      <div class="walk-head">
+        <h2 id="preview-heading">Check before you choose</h2>
+        <p class="walk-text">Open a large preview of any photo. Every copy shows its folder, size, pixel size and capture time.</p>
+      </div>
+      <figure class="screenshot walk-shot">
+        <div class="screenshot-frame scroll-region" tabindex="0" role="region" aria-label="Photo preview screenshot">
+          <picture>
+            <source type="image/avif" srcset="/src/img/app-photo-preview-480.avif 480w, /src/img/app-photo-preview-960.avif 960w, /src/img/app-photo-preview-1600.avif 1600w, /src/img/app-photo-preview-2093.avif 2093w" sizes="(min-width: 860px) min(100vw - 48px, 1192px), 820px">
+            <source type="image/webp" srcset="/src/img/app-photo-preview-480.webp 480w, /src/img/app-photo-preview-960.webp 960w, /src/img/app-photo-preview-1600.webp 1600w, /src/img/app-photo-preview-2093.webp 2093w" sizes="(min-width: 860px) min(100vw - 48px, 1192px), 820px">
+            <img src="/src/img/app-photo-preview-2093.webp" alt="A photo family opened in the app, with a large preview of one shot over the list of its RAW and JPEG files" width="2093" height="1364" loading="lazy" decoding="async">
+          </picture>
+        </div>
+      </figure>
+    </section>
+
+    <section class="wrap walk" aria-labelledby="numbers-heading">
+      <div class="walk-head">
+        <h2 id="numbers-heading">On the developer's PC</h2>
+        <p class="walk-text">First scan of {{facts.wholePcDrives}} drives with an empty catalog.</p>
+      </div>
       <dl class="stats">
         <div class="stat">
-          <dt>{{facts.photoHeaderTime}}</dt>
-          <dd>to read camera details of {{facts.photosRead}} photos.</dd>
+          <dt>{{facts.wholePcPhotoHeaders}}</dt>
+          <dd>photo headers read.</dd>
         </div>
         <div class="stat">
-          <dt>{{facts.photoFamilies}}</dt>
-          <dd>photo families in {{facts.photosWithCaptureTime}} photos.</dd>
+          <dt>{{facts.wholePcPhotoFamilies}}</dt>
+          <dd>photo families found.</dd>
         </div>
         <div class="stat">
-          <dt>{{facts.oneFamilyExtraCopies}}</dt>
-          <dd>of extra copies of one photo.</dd>
+          <dt>{{facts.photosPerSecondSsd}}</dt>
+          <dd>photos a second on an SSD.</dd>
         </div>
       </dl>
     </section>

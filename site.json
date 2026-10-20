@@ -1,6 +1,6 @@
 {
   "contactEmail": "contact@onegoodcopy.com",
-  "storeUrl": "https://apps.microsoft.com/search?query=One%20Good%20Copy",
-  "storeUrlNote": "Placeholder: Store search for the filed product name. Replace with https://apps.microsoft.com/detail/<product id> once the listing is live.",
+  "storeUrl": "https://apps.microsoft.com/detail/9MVQSRQNNRH0",
+  "storeUrlNote": "Store ID 9MVQSRQNNRH0. The listing is reserved but not live yet, so this link shows a Store error page until it is published.",
   "coffeeUrl": "https://ko-fi.com/jookoi"
 }
