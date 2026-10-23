@@ -16,4 +16,3 @@ Static site for One Good Copy. Vite multi-page build, no client JavaScript. Own 
 - 🖼️ Home tells the story (`docs/brand/WEBSITE-STORY.md` in the app repo) over full-size screenshots: hero, three numbered steps, Fast (whole-PC screenshot, stat cards, how, table), the deal, download. Links to other pages stay small, under a screenshot or at the end. Longer explanations live on Folders and Photos.
 - 🌑 Dark only, like the app. Colours are tokens on `:root` in `src/main.css`. `theme-color` in every page is `#0e0f12`.
 - ✍️ Copy rules: `docs/brand/WEBSITE-STORY.md`.
-- ⚠️ The Privacy page states the app has no network code and the site has no scripts or cookies. Adding either makes that page false.

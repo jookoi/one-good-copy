@@ -2,3 +2,6 @@ node_modules/
 dist/
 .claude/
 .agents/
+/.idea/modules.xml
+/.idea/one-good-copy.iml
+/.idea/vcs.xml

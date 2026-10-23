@@ -236,8 +236,23 @@ function preloadCriticalFonts() {
   };
 }
 
+// Counts page visits with the self-hosted Plausible instance. Cookieless, no personal data stored.
+function plausibleAnalytics() {
+  const snippet = `<script async src="https://thezoo.jookoi.com/js/pa-S5ATvh23ZjqOPxASJyRg1.js"></script>
+  <script>
+    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+    plausible.init()
+  </script>`;
+  return {
+    name: "plausible-analytics",
+    transformIndexHtml(html) {
+      return html.replace("</head>", `  ${snippet}\n</head>`);
+    },
+  };
+}
+
 export default defineConfig({
-  plugins: [sharedLayout(), siteSettings(), benchmarkNumbers(), thirdPartyPackages(), preloadCriticalFonts()],
+  plugins: [sharedLayout(), siteSettings(), benchmarkNumbers(), thirdPartyPackages(), preloadCriticalFonts(), plausibleAnalytics()],
   build: {
     target: "es2022",
     cssCodeSplit: false,
