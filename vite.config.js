@@ -38,7 +38,7 @@ function siteHeader(currentUrl) {
     </a>
     <nav class="site-nav" aria-label="Main">
       ${navLinks.join("\n      ")}
-      <a class="button button-small" href="{{site.storeUrl}}">Download</a>
+      <span class="nav-downloads"><a class="button button-small" href="{{site.storeUrl}}">Windows</a><a class="button button-small" href="{{site.snapUrl}}">Linux</a></span>
     </nav>
   </header>`;
 }
