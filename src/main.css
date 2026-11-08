@@ -234,6 +234,9 @@ h2 {
 .hero-aside ul { margin: 0; padding: 0; list-style: none; }
 .hero-downloads { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 0; }
 .hero-downloads .button { height: 48px; padding: 0 22px; font-size: 16px; }
+.hero-alt { margin: 12px 0 0; font-size: 14px; line-height: 1.5; }
+.hero-alt a { color: var(--ink-faint); text-decoration: underline; text-underline-offset: 3px; }
+.hero-alt a:hover { color: var(--orange); }
 .nav-downloads { display: inline-flex; gap: 8px; }
 .closing-buttons { position: relative; display: inline-flex; flex-wrap: wrap; gap: 12px; }
 .hero-aside b { color: var(--orange); font-weight: 600; }
