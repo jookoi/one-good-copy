@@ -7,10 +7,15 @@ Static site for One Good Copy. Vite multi-page build, no client JavaScript. Own 
 | `npm run dev` | local server |
 | `npm run build` | `dist/` to deploy |
 | `npm run images` | screenshots in `_jookoi-raw-screenshots/` (gitignored) to AVIF/WebP in `src/img/`. Names, crops and name redactions are in `scripts/optimize-images.mjs`. The `app-*` files are copies of the app repo's `docs/screenshots`. |
+| `npm run social-cards` | link-preview cards (1200x630 JPEG) in `public/social/` from `src/img` screenshots. Run after `npm run images`, commit the output |
+| `npm run check-seo` | checks `dist/`: title and description length, one `h1`, canonical in `sitemap.xml`, `og:image` exists, JSON-LD parses, `llms.txt` filled |
 | `npm run licenses` | copies the app repo's `THIRD-PARTY-NOTICES.txt` to `public/`. The Licenses page lists its packages. Run after the app regenerates it. Set `APP_REPO` if the app repo is not at `../jookoi-disc-report/modernized/jookoi-windows-drive-spring-cleaner`. |
 
 - ✅ `npm run check` (ESLint + build) runs on every commit via `.husky/pre-commit`. CI (`.github/workflows/deploy.yml`) lints, builds and deploys `dist/` to GitHub Pages on push to `main`. Pages must be set to Source: GitHub Actions. Links are root-absolute (`/folders/`), so the site must be served from a domain root, not `/one-good-copy/`.
-- 🧩 Header and footer are written by `vite.config.js` (`sharedLayout`). Add a page to the `pages` list there, or it is not built and not linked.
+- 🧩 Header and footer are written by `vite.config.js` (`sharedLayout`). Add a page to the `pages` list there, or it is not built, not linked and not in `sitemap.xml`.
+- 🔍 Search and AI: `searchAndSharing` adds canonical, Open Graph, X card and JSON-LD to every page from its own `<title>` and description. `crawlerFiles` writes `sitemap.xml` (`lastmod` = page file's last commit, so CI checks out full history) and `llms.txt` from `src/llms.txt`. App description and feature list for JSON-LD are in `site.json`. Titles lead with what people search for, the `h1` keeps the brand voice.
+- 🤖 Crawlers are welcome, AI training included (`public/robots.txt`, `Content-Signal: ai-train=yes`). Cloudflare must keep "Manage robots.txt" off, or it prepends `Disallow` blocks for AI bots, and "Block AI bots" off, or they get `403`.
+- 📣 CI pings IndexNow (Bing, Yandex and others) after each deploy, key file `public/<key>.txt`. Google reads `sitemap.xml` through Search Console instead.
 - 🔗 `{{site.x}}` comes from `site.json` (Store, Ko-fi, contact). A missing key fails the build.
 - 🔢 `<!-- speed-table -->` and `{{facts.x}}` come from `benchmarks/scan-speeds.json`. Never type a number into a page. `benchmarks/README.md` says where each one was measured.
 - 🖼️ Home tells the story (`docs/brand/WEBSITE-STORY.md` in the app repo) over full-size screenshots: hero, three numbered steps, Fast (whole-PC screenshot, stat cards, how, table), the deal, download. Links to other pages stay small, under a screenshot or at the end. Longer explanations live on Folders and Photos.

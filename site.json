@@ -1,4 +1,17 @@
 {
+  "siteUrl": "https://onegoodcopy.com",
+  "appDescription": "Free desktop app for Windows and Linux that scans every drive, finds duplicate folders, duplicate files and photo copies (RAW, JPEG, exports), shows what fills each drive and which files exist nowhere else, so you can keep one clean copy and free up space. Local only, no account, deletes only to the Recycle Bin.",
+  "appFeatures": [
+    "Find duplicate folders across all drives, including partial copies of backups",
+    "Compare copies of a folder side by side and see files that exist in only one copy",
+    "Find duplicate files by content, not by name",
+    "Group photo copies by camera and capture time: RAW, camera JPEG, exports and edits",
+    "Disk space analyzer with folder tree and ring charts per drive",
+    "Search file names across every scanned drive",
+    "Find the biggest files and empty folders",
+    "Scans only read, deletes go to the Recycle Bin, nothing pre-selected",
+    "No network code, no account, no ads"
+  ],
   "contactEmail": "contact@onegoodcopy.com",
   "storeUrl": "https://apps.microsoft.com/detail/9MVQSRQNNRH0",
   "storeUrlNote": "Store ID 9MVQSRQNNRH0. The listing is reserved but not live yet, so this link shows a Store error page until it is published.",

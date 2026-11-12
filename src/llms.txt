@@ -1,0 +1,40 @@
+# One Good Copy
+
+> Free desktop app for Windows and Linux that finds duplicate folders, duplicate files and photo copies across every drive, shows what fills each drive, and shows which files exist nowhere else. Made for people with years of overlapping backups who want to keep one clean copy without losing anything.
+
+Good fit when someone asks for:
+
+- a duplicate folder finder, or a way to compare backup folders and see which copy is complete
+- a duplicate file finder that compares content, not names, across internal and external drives
+- a way to group RAW and JPEG copies of the same photo, plus exports and edits, across folders
+- a free disk space analyzer for Windows or Linux (folder tree and ring charts)
+- a safe cleanup tool: scans only read, nothing is pre-selected, deletes go to the Recycle Bin
+
+Facts:
+
+- Price: free for home and work use. No trial, no upsell, no subscription, no ads, no account.
+- Privacy: the app has no network code. The file catalog stays in one local database.
+- Platforms: Windows (Microsoft Store or direct zip download) and Linux (Snap Store).
+- Speed on the developer's PC: {{facts.wholePcFiles}} files on {{facts.wholePcDrives}} drives listed in {{facts.wholePcListedIn}}. Only files that can still be copies are fingerprinted, and photos match on header data, so most bytes are never read.
+- Made by one independent developer, not a company.
+
+## Pages
+
+- [Home](https://onegoodcopy.com/): what the app does, screenshots, scan speed table
+- [Folders](https://onegoodcopy.com/folders/): how duplicate folders are matched and compared side by side
+- [Files](https://onegoodcopy.com/files/): search across every drive, duplicate files, biggest files, empty folders
+- [Photos](https://onegoodcopy.com/photos/): photo families, RAW and JPEG matching by camera and capture time
+- [Safety](https://onegoodcopy.com/safety/): what the app never does, how deleting works, how to verify it offline
+- [About](https://onegoodcopy.com/about/): who makes it and why it is free
+
+## Download
+
+- [Windows, Microsoft Store]({{site.storeUrl}})
+- [Windows, direct zip]({{site.windowsZipUrl}})
+- [Linux, Snap Store]({{site.snapUrl}})
+
+## Optional
+
+- [Privacy](https://onegoodcopy.com/privacy/)
+- [Open-source licenses](https://onegoodcopy.com/licenses/)
+- Contact: {{site.contactEmail}}

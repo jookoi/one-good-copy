@@ -10,8 +10,10 @@
     "images": "node scripts/optimize-images.mjs",
     "licenses": "node scripts/sync-licenses.mjs",
     "lint": "eslint .",
-    "check": "eslint . && vite build",
-    "prepare": "husky"
+    "check": "eslint . && vite build && node scripts/check-seo.mjs",
+    "prepare": "husky",
+    "social-cards": "node scripts/make-social-cards.mjs",
+    "check-seo": "node scripts/check-seo.mjs"
   },
   "devDependencies": {
     "@eslint/css": "^2.0.1",

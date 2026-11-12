@@ -1,13 +1,15 @@
 import { defineConfig } from "vite";
 import { resolve } from "node:path";
 import { readFileSync } from "node:fs";
+import { execFileSync } from "node:child_process";
 
 // Each page: its source file, its URL, and whether it shows in the header nav.
+// `socialCard` names its link-preview image in public/social/ (default `home`, see scripts/make-social-cards.mjs).
 const pages = [
   { file: "index.html", url: "/", label: "Home", inNav: true },
-  { file: "folders/index.html", url: "/folders/", label: "Folders", inNav: true },
-  { file: "files/index.html", url: "/files/", label: "Files", inNav: true },
-  { file: "photos/index.html", url: "/photos/", label: "Photos", inNav: true },
+  { file: "folders/index.html", url: "/folders/", label: "Folders", inNav: true, socialCard: "folders" },
+  { file: "files/index.html", url: "/files/", label: "Files", inNav: true, socialCard: "files" },
+  { file: "photos/index.html", url: "/photos/", label: "Photos", inNav: true, socialCard: "photos" },
   { file: "safety/index.html", url: "/safety/", label: "Safety", inNav: true },
   { file: "about/index.html", url: "/about/", label: "About", inNav: true },
   { file: "privacy/index.html", url: "/privacy/", label: "Privacy" },
@@ -134,9 +136,40 @@ function speedTable(benchmarks) {
         </table>`;
 }
 
+const benchmarksFile = resolve(import.meta.dirname, "benchmarks/scan-speeds.json");
+const settingsFile = resolve(import.meta.dirname, "site.json");
+
+// benchmarks/scan-speeds.json plus the facts derived from its whole-PC row.
+function readBenchmarks() {
+  const benchmarks = JSON.parse(readFileSync(benchmarksFile, "utf8"));
+  benchmarks.facts.wholePcFiles = `${(benchmarks.wholePc.files / 1_000_000).toFixed(1)} million`;
+  benchmarks.facts.wholePcListedIn = `${Math.round(benchmarks.wholePc.listedMs / 60_000)} minutes`;
+  benchmarks.facts.wholePcDrives = String(benchmarks.wholePc.label.match(/\d+/)[0]);
+  benchmarks.facts.wholePcData = formatBytes(benchmarks.wholePc.bytes);
+  return benchmarks;
+}
+
+function readSettings() {
+  return JSON.parse(readFileSync(settingsFile, "utf8"));
+}
+
+// Swaps {{facts.x}} and {{site.x}}. A missing name fails the build.
+function fillFacts(text, facts) {
+  return text.replace(/\{\{facts\.(\w+)\}\}/g, (token, name) => {
+    if (!(name in facts)) throw new Error(`benchmarks/scan-speeds.json has no facts.${name}`);
+    return facts[name];
+  });
+}
+
+function fillSettings(text, settings) {
+  return text.replace(/\{\{site\.(\w+)\}\}/g, (token, name) => {
+    if (!(name in settings)) throw new Error(`site.json has no ${name}`);
+    return settings[name];
+  });
+}
+
 // Fills <!-- speed-table --> and {{facts.name}} from benchmarks/scan-speeds.json. A missing fact fails the build.
 function benchmarkNumbers() {
-  const benchmarksFile = resolve(import.meta.dirname, "benchmarks/scan-speeds.json");
   return {
     name: "benchmark-numbers",
     configureServer(server) {
@@ -148,17 +181,8 @@ function benchmarkNumbers() {
     transformIndexHtml: {
       order: "pre",
       handler(html) {
-        const benchmarks = JSON.parse(readFileSync(benchmarksFile, "utf8"));
-        benchmarks.facts.wholePcFiles = `${(benchmarks.wholePc.files / 1_000_000).toFixed(1)} million`;
-        benchmarks.facts.wholePcListedIn = `${Math.round(benchmarks.wholePc.listedMs / 60_000)} minutes`;
-        benchmarks.facts.wholePcDrives = String(benchmarks.wholePc.label.match(/\d+/)[0]);
-        benchmarks.facts.wholePcData = formatBytes(benchmarks.wholePc.bytes);
-        return html
-          .replace("<!-- speed-table -->", speedTable(benchmarks))
-          .replace(/\{\{facts\.(\w+)\}\}/g, (token, name) => {
-            if (!(name in benchmarks.facts)) throw new Error(`benchmarks/scan-speeds.json has no facts.${name}`);
-            return benchmarks.facts[name];
-          });
+        const benchmarks = readBenchmarks();
+        return fillFacts(html.replace("<!-- speed-table -->", speedTable(benchmarks)), benchmarks.facts);
       },
     },
   };
@@ -166,18 +190,152 @@ function benchmarkNumbers() {
 
 // Fills {{site.name}} from site.json (contact address, Store link). A missing key fails the build.
 function siteSettings() {
-  const settingsFile = resolve(import.meta.dirname, "site.json");
   return {
     name: "site-settings",
     transformIndexHtml: {
       order: "pre",
       handler(html) {
-        const settings = JSON.parse(readFileSync(settingsFile, "utf8"));
-        return html.replace(/\{\{site\.(\w+)\}\}/g, (token, name) => {
-          if (!(name in settings)) throw new Error(`site.json has no ${name}`);
-          return settings[name];
-        });
+        return fillSettings(html, readSettings());
       },
+    },
+  };
+}
+
+// What search engines, chat apps and AI assistants read about each page: canonical URL, link preview
+// (Open Graph, X card) and schema.org JSON-LD. Title and description come from the page's own tags.
+function searchAndSharing() {
+  const escapeAttribute = (text) => text.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+  return {
+    name: "search-and-sharing",
+    transformIndexHtml: {
+      order: "pre",
+      handler(html, context) {
+        const settings = readSettings();
+        const currentUrl = context.path.replace(/index\.html$/, "");
+        const page = pages.find((candidate) => candidate.url === currentUrl);
+        if (!page) throw new Error(`${context.path} is not in the pages list in vite.config.js`);
+        const title = html.match(/<title>([^<]+)<\/title>/)?.[1];
+        const description = html.match(/<meta name="description" content="([^"]+)">/)?.[1];
+        if (!title || !description) throw new Error(`${page.file} needs a <title> and a meta description`);
+
+        const pageUrl = new URL(page.url, settings.siteUrl).href;
+        const imageUrl = new URL(`/social/${page.socialCard ?? "home"}.jpg`, settings.siteUrl).href;
+        const tags = [
+          `<link rel="canonical" href="${pageUrl}">`,
+          `<meta name="robots" content="index, follow, max-image-preview:large">`,
+          `<meta property="og:type" content="website">`,
+          `<meta property="og:site_name" content="One Good Copy">`,
+          `<meta property="og:locale" content="en">`,
+          `<meta property="og:url" content="${pageUrl}">`,
+          `<meta property="og:title" content="${title}">`,
+          `<meta property="og:description" content="${description}">`,
+          `<meta property="og:image" content="${imageUrl}">`,
+          `<meta property="og:image:width" content="1200">`,
+          `<meta property="og:image:height" content="630">`,
+          `<meta property="og:image:alt" content="${escapeAttribute(`One Good Copy: ${page.label === "Home" ? "duplicate folder finder" : page.label}`)}">`,
+          `<meta name="twitter:card" content="summary_large_image">`,
+          `<link rel="alternate" type="text/plain" title="Summary for AI assistants" href="/llms.txt">`,
+          `<script type="application/ld+json">${JSON.stringify(structuredData(page, pageUrl, imageUrl, settings))}</script>`,
+        ];
+        return html.replace("</head>", `  ${tags.join("\n  ")}\n</head>`);
+      },
+    },
+  };
+}
+
+// schema.org graph. Home describes the app itself, other pages point at it and carry a breadcrumb.
+function structuredData(page, pageUrl, imageUrl, settings) {
+  const siteUrl = new URL("/", settings.siteUrl).href;
+  const ids = { website: `${siteUrl}#website`, publisher: `${siteUrl}#publisher`, app: `${siteUrl}#app` };
+  const webPage = {
+    "@type": "WebPage",
+    "@id": `${pageUrl}#webpage`,
+    url: pageUrl,
+    isPartOf: { "@id": ids.website },
+    about: { "@id": ids.app },
+    primaryImageOfPage: imageUrl,
+    inLanguage: "en",
+  };
+  if (page.url !== "/") {
+    return {
+      "@context": "https://schema.org",
+      "@graph": [
+        webPage,
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "One Good Copy", item: siteUrl },
+            { "@type": "ListItem", position: 2, name: page.label, item: pageUrl },
+          ],
+        },
+      ],
+    };
+  }
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      webPage,
+      { "@type": "WebSite", "@id": ids.website, url: siteUrl, name: "One Good Copy", publisher: { "@id": ids.publisher }, inLanguage: "en" },
+      {
+        "@type": "Organization",
+        "@id": ids.publisher,
+        name: "One Good Copy",
+        url: siteUrl,
+        logo: new URL("/favicon.svg", siteUrl).href,
+        email: settings.contactEmail,
+        sameAs: [settings.coffeeUrl],
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": ids.app,
+        name: "One Good Copy",
+        url: siteUrl,
+        description: settings.appDescription,
+        applicationCategory: "UtilitiesApplication",
+        applicationSubCategory: "Duplicate file finder and disk space analyzer",
+        operatingSystem: "Windows, Linux",
+        isAccessibleForFree: true,
+        offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
+        downloadUrl: [settings.storeUrl, settings.snapUrl, settings.windowsZipUrl],
+        installUrl: settings.storeUrl,
+        screenshot: imageUrl,
+        image: imageUrl,
+        featureList: settings.appFeatures,
+        publisher: { "@id": ids.publisher },
+        sameAs: [settings.storeUrl, settings.snapUrl],
+      },
+    ],
+  };
+}
+
+// Last commit date of a file, for sitemap <lastmod>. CI needs full history (fetch-depth: 0) for this to be right.
+function lastCommitDate(file) {
+  try {
+    return execFileSync("git", ["log", "-1", "--format=%cs", "--", file], { cwd: import.meta.dirname, encoding: "utf8" }).trim() || null;
+  } catch {
+    return null;
+  }
+}
+
+// Writes sitemap.xml from the pages list and llms.txt (the plain-text summary for AI assistants) from src/llms.txt.
+function crawlerFiles() {
+  return {
+    name: "crawler-files",
+    apply: "build",
+    generateBundle() {
+      const settings = readSettings();
+      const urls = pages.map((page) => {
+        const lastModified = lastCommitDate(page.file);
+        const lastModifiedTag = lastModified ? `<lastmod>${lastModified}</lastmod>` : "";
+        return `  <url><loc>${new URL(page.url, settings.siteUrl).href}</loc>${lastModifiedTag}</url>`;
+      });
+      this.emitFile({
+        type: "asset",
+        fileName: "sitemap.xml",
+        source: `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`,
+      });
+      const llmsTemplate = readFileSync(resolve(import.meta.dirname, "src/llms.txt"), "utf8");
+      this.emitFile({ type: "asset", fileName: "llms.txt", source: fillSettings(fillFacts(llmsTemplate, readBenchmarks().facts), settings) });
     },
   };
 }
@@ -252,7 +410,7 @@ function plausibleAnalytics() {
 }
 
 export default defineConfig({
-  plugins: [sharedLayout(), siteSettings(), benchmarkNumbers(), thirdPartyPackages(), preloadCriticalFonts(), plausibleAnalytics()],
+  plugins: [sharedLayout(), searchAndSharing(), siteSettings(), benchmarkNumbers(), thirdPartyPackages(), crawlerFiles(), preloadCriticalFonts(), plausibleAnalytics()],
   build: {
     target: "es2022",
     cssCodeSplit: false,
