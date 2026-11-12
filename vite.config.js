@@ -51,6 +51,10 @@ function siteFooter(currentUrl) {
     <nav aria-label="Footer">
       ${footerLinks.join("\n      ")}
     </nav>
+    <p class="footer-extra">
+      <a href="{{site.windowsZipUrl}}">Windows without the Store (zip)</a>
+      <a href="{{site.issuesUrl}}">Report a bug or request a feature</a>
+    </p>
   </footer>`;
 }
 
@@ -246,7 +250,7 @@ function searchAndSharing() {
 // schema.org graph. Home describes the app itself, other pages point at it and carry a breadcrumb.
 function structuredData(page, pageUrl, imageUrl, settings) {
   const siteUrl = new URL("/", settings.siteUrl).href;
-  const ids = { website: `${siteUrl}#website`, publisher: `${siteUrl}#publisher`, app: `${siteUrl}#app` };
+  const ids = { website: `${siteUrl}#website`, developer: `${siteUrl}#developer`, app: `${siteUrl}#app` };
   const webPage = {
     "@type": "WebPage",
     "@id": `${pageUrl}#webpage`,
@@ -275,15 +279,14 @@ function structuredData(page, pageUrl, imageUrl, settings) {
     "@context": "https://schema.org",
     "@graph": [
       webPage,
-      { "@type": "WebSite", "@id": ids.website, url: siteUrl, name: "One Good Copy", publisher: { "@id": ids.publisher }, inLanguage: "en" },
+      { "@type": "WebSite", "@id": ids.website, url: siteUrl, name: "One Good Copy", publisher: { "@id": ids.developer }, inLanguage: "en" },
       {
-        "@type": "Organization",
-        "@id": ids.publisher,
-        name: "One Good Copy",
-        url: siteUrl,
-        logo: new URL("/favicon.svg", siteUrl).href,
+        "@type": "Person",
+        "@id": ids.developer,
+        name: settings.developerName,
+        url: new URL("/about/", siteUrl).href,
         email: settings.contactEmail,
-        sameAs: [settings.coffeeUrl],
+        sameAs: [settings.githubUrl, settings.linkedinUrl, settings.coffeeUrl],
       },
       {
         "@type": "SoftwareApplication",
@@ -301,7 +304,8 @@ function structuredData(page, pageUrl, imageUrl, settings) {
         screenshot: imageUrl,
         image: imageUrl,
         featureList: settings.appFeatures,
-        publisher: { "@id": ids.publisher },
+        author: { "@id": ids.developer },
+        publisher: { "@id": ids.developer },
         sameAs: [settings.storeUrl, settings.snapUrl],
       },
     ],

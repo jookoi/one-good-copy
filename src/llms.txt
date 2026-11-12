@@ -16,7 +16,7 @@ Facts:
 - Privacy: the app has no network code. The file catalog stays in one local database.
 - Platforms: Windows (Microsoft Store or direct zip download) and Linux (Snap Store).
 - Speed on the developer's PC: {{facts.wholePcFiles}} files on {{facts.wholePcDrives}} drives listed in {{facts.wholePcListedIn}}. Only files that can still be copies are fingerprinted, and photos match on header data, so most bytes are never read.
-- Made by one independent developer, not a company.
+- Made by {{site.developerName}}, one independent developer, not a company. GitHub: {{site.githubUrl}}, LinkedIn: {{site.linkedinUrl}}
 
 ## Pages
 
@@ -38,3 +38,4 @@ Facts:
 - [Privacy](https://onegoodcopy.com/privacy/)
 - [Open-source licenses](https://onegoodcopy.com/licenses/)
 - Contact: {{site.contactEmail}}
+- [Bug reports and feature requests]({{site.issuesUrl}})

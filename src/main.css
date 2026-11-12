@@ -232,11 +232,6 @@ h2 {
 /* the deal, beside the headline: there to find, not part of the reading line */
 .hero-aside { font-size: 15px; line-height: 1.9; color: var(--ink-faint); }
 .hero-aside ul { margin: 0; padding: 0; list-style: none; }
-.hero-downloads { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 0; }
-.hero-downloads .button { height: 48px; padding: 0 22px; font-size: 16px; }
-.hero-alt { margin: 12px 0 0; font-size: 14px; line-height: 1.5; }
-.hero-alt a { color: var(--ink-faint); text-decoration: underline; text-underline-offset: 3px; }
-.hero-alt a:hover { color: var(--orange); }
 .nav-downloads { display: inline-flex; gap: 8px; }
 .closing-buttons { position: relative; display: inline-flex; flex-wrap: wrap; gap: 12px; }
 .hero-aside b { color: var(--orange); font-weight: 600; }
@@ -424,6 +419,7 @@ h2 {
   gap: 8px 22px;
   justify-content: flex-end;
 }
+.footer-extra { display: flex; flex-wrap: wrap; gap: 0 22px; justify-content: flex-end; margin: 0; }
 .site-footer a { display: inline-block; padding: 12px 0; border-radius: 8px; color: var(--ink-faint); }
 .site-footer a:hover { color: var(--orange); }
 .site-nav a[aria-current="page"]:not(.button), .site-footer a[aria-current="page"] {
@@ -755,6 +751,7 @@ main:focus { outline: none; }
   .site-nav a:not(.button)::after { left: 10px; right: 10px; }
 
   .site-footer nav { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 0 28px; }
+  .footer-extra { justify-content: start; gap: 0 28px; }
 
   /* Speed table: each drive becomes a block of label and value pairs. */
   .speed-table, .speed-table tbody { display: block; min-width: 0; }
